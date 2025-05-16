@@ -36,7 +36,7 @@ def student_list_operations(students, operation, *args):
         if idx in students:
             students[students.index(idx)] = new_student
         else:
-            print(f"索引 {index} 超出范围，无法更新。") 
+            print(f"索引 {idx} 超出范围，无法更新。") 
     else:
 
         print("无效的操作类型，请选择 'add', 'remove' 或 'update'。")
