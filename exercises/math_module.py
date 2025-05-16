@@ -17,5 +17,8 @@ def calculate_square_root(number):
     返回:
     - 数字的平方根
     """
-    # 请在下方编写代码
-    pass 
+    # 请在下方编写代码 
+    import math
+    if number < 0:
+        raise ValueError("输入必须是非负数")
+    return math.sqrt(number)

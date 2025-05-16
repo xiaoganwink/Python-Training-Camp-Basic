@@ -20,4 +20,24 @@ def student_list_operations(students, operation, *args):
     - 操作后的学生列表
     """
     # 请在下方编写代码
-    pass 
+    pass
+    if operation == "add":
+        student = args[0]
+        students.append(student)
+    elif operation == "remove":
+        student = args[0]
+        if student in students:
+            students.remove(student)
+        else:
+            print(f"学生 {student} 不在列表中，无法删除。")
+    elif operation == "update":
+        idx = args[0]
+        new_student = args[1]
+        if idx in students:
+            students[students.index(idx)] = new_student
+        else:
+            print(f"索引 {index} 超出范围，无法更新。") 
+    else:
+
+        print("无效的操作类型，请选择 'add', 'remove' 或 'update'。")
+    return students 

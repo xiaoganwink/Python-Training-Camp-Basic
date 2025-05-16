@@ -19,7 +19,10 @@ def extract_keywords(text):
     """
     # 请在下方编写代码
     # 使用split()方法分割字符串，返回关键词列表
-    pass
+    if not isinstance(text, str):
+        raise TypeError("输入必须是字符串类型")
+    else:
+        return text.split()
 
 def parse_csv_line(csv_line):
     """
@@ -33,7 +36,10 @@ def parse_csv_line(csv_line):
     """
     # 请在下方编写代码
     # 使用split()方法分割CSV行，返回字段列表
-    pass
+    if not isinstance(csv_line, str):
+        raise TypeError("输入必须是字符串类型")
+    else:
+        return csv_line.split(',')
 
 def extract_name_and_domain(email):
     """
@@ -47,4 +53,11 @@ def extract_name_and_domain(email):
     """
     # 请在下方编写代码
     # 使用split()方法分割电子邮件地址，返回用户名和域名的元组
-    pass 
+    if not isinstance(email, str):
+        raise TypeError("输入必须是字符串类型")
+    else:
+        try:
+            username, domain = email.split('@')
+            return username, domain
+        except ValueError:
+            raise ValueError("电子邮件地址格式不正确") 

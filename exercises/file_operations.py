@@ -8,18 +8,13 @@
 """
 
 def read_file(file_path):
-    """
-    读取文本文件内容
-    
-    参数:
-    - file_path: 文件路径
-    
-    返回:
-    - 文件内容字符串
-    """
-    # 请在下方编写代码
-    # 使用open()函数打开文件并读取内容
-    pass
+    try:
+        with open(file_path,"r",encoding="utf-8") as f:
+            content=f.read()
+            return content
+    except FileNotFoundError:
+        print("文件未找到")
+        return None
 
 def write_file(file_path, content):
     """
@@ -35,3 +30,13 @@ def write_file(file_path, content):
     # 请在下方编写代码
     # 使用with语句和open()函数写入内容到文件
     pass 
+    try:
+        with open(file_path,"w",encoding="utf-8") as f:
+            f.write(content)                   
+        return True
+    except Exception as e:
+        print("写入文件时发生错误:", e)
+        return False
+
+
+    

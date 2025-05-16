@@ -7,7 +7,6 @@
 
 请补全下面的函数，实现发送HTTP请求并处理响应的功能。
 """
-
 def get_website_content(url):
     """
     发送GET请求获取网页内容
@@ -27,6 +26,33 @@ def get_website_content(url):
     # 使用requests.get()发送GET请求
     # 返回包含状态码、内容和头部信息的字典
     pass
+    # 发送GET请求
+    import requests
+    # 处理网络异常
+    from requests.exceptions import RequestException
+    try:
+        request = requests.get(url)
+        # 获取响应状态码
+        status_code = request.status_code
+        # 获取响应内容
+        content = request.text
+        # 获取响应头部信息
+        headers = request.headers
+        # 返回结果
+        return {
+            'status_code': status_code,
+            'content': content,
+            'headers': headers
+        }
+    except RequestException as e:
+        # 处理网络异常（如超时、连接错误）
+        return {
+            'status_code': None,
+            'content': None,
+            'headers': None,
+            'error': str(e)  # 可选：返回错误信息
+        }
+
 
 def post_data(url, data):
     """
@@ -47,4 +73,34 @@ def post_data(url, data):
     # 请在下方编写代码
     # 使用requests.post()发送POST请求
     # 返回包含状态码、响应JSON和成功标志的字典
-    pass 
+    pass
+    # 发送POST请求
+    import requests
+    # 处理网络异常
+    from requests.exceptions import RequestException
+    try:
+        request = requests.post(url, json=data)
+        # 获取响应状态码
+        status_code = request.status_code
+        # 获取响应JSON数据
+        # 注意：如果响应不是JSON格式，json()方法会抛出异常
+        # 因此需要使用try-except来处理
+        try:
+            response_json = request.json()
+        except ValueError:
+            response_json = None  # 如果不是JSON格式，返回None
+       # response_json = request.json() if request.status_code == 200 else None
+        # 返回结果
+        return {
+            'status_code': status_code,
+            'response_json': response_json,
+            'success': request.ok # 判断是否为2xx状态码
+        }
+    except RequestException as e:
+        # 处理网络异常（如超时、连接错误）
+        return {
+            'status_code': None,
+            'response_json': None,
+            'success': False,
+            'error': str(e)  # 可选：返回错误信息
+        }

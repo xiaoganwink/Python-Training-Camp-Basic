@@ -21,3 +21,31 @@ def student_dict_operations(students_dict, operation, *args):
     """
     # 请在下方编写代码
     pass 
+    if operation== "add":
+        name,score=args
+        students_dict[name]=score
+        return students_dict
+    elif operation== "remove":
+        name=args[0]
+        if name in students_dict:
+            del students_dict[name]
+            return students_dict
+        else:
+            return f"{name} 不在字典中"
+    elif operation== "update":
+        name,score=args
+        if name in students_dict:
+            students_dict[name]=score
+            return students_dict
+        else:
+            return f"{name} 不在字典中"
+    elif operation=="get":
+        name=args[0]
+        if name in students_dict:
+            return students_dict[name]
+        else:
+            return f"{name} 不在字典中"
+    else:
+        return "无效操作"
+    
+            
